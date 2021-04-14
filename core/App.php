@@ -11,6 +11,7 @@ use Core\Component\Controller\ControllerException;
 use Psr\Http\Message\RequestInterface;
 use Core\Component\Controller\ArgumentResolverInterface;
 use Core\Component\Controller\ControllerResolverInterface;
+use Psr\Container\ContainerInterface;
 use QH\Routing\Route\RouteException;
 use QH\Routing\Router\RouterInterface;
 use QH\Routing\Route\RouteResolverInterface;
@@ -26,6 +27,7 @@ class App
     private $router;
     private $eventEmitter;
     private $configLoader;
+    private $container;
 
     public function __construct(
         RequestInterface $request,
@@ -47,7 +49,8 @@ class App
     }
 
     public function run()
-    {
+    {   
+ 
         try{
 
             $config = require_once PROJECT_DIR . '/config/app.php';
@@ -67,7 +70,8 @@ class App
 
             $controller = $this->controllerResolver->resolve($route);
             $eventEmitter->emit('core.controller',new ControllerEvent($controller));
-
+            
+            $this->argumentResolver->setContainer($this->container);
             $arguments = $this->argumentResolver->resolve($controller,$route);
             $eventEmitter->emit('core.argument',new ArgumentEvent($arguments));
 
@@ -88,6 +92,12 @@ class App
         }
 
 
+    }
+
+
+    public function setContainer(ContainerInterface $container)
+    {
+        $this->container = $container;
     }
 
 

@@ -2,20 +2,18 @@
 
 define('PROJECT_DIR',dirname(__DIR__));
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use QH\Container\Container;
 
-use Core\Component\Container\Container;
-use Core\Component\Container\ContainerDefaultConfig;
+require_once PROJECT_DIR . '/vendor/autoload.php';
+$containerConfiguration = require_once PROJECT_DIR . '/core/ContainerConfiguration.php';
 
 $container = new Container(
-    ContainerDefaultConfig::services(),
-    ContainerDefaultConfig::mapping()
+    $containerConfiguration['services'],
+    $containerConfiguration['mapping']
 );
 
-require_once PROJECT_DIR . '/config/container.php';
-
 $app = $container->instanciate(Core\App::class);
+$app->setContainer($container);
 $app->run();
-
 
 

@@ -5,9 +5,12 @@ namespace Core\Component\Controller;
 use Core\Component\Http\Request;
 use QH\Routing\Route\Route;
 use Core\Component\Container\Container;
+use Psr\Container\ContainerInterface;
 
 class ArgumentResolver implements ArgumentResolverInterface
 {
+
+    private $container;
 
     public function resolve(callable $callback, Route $route): array
     {
@@ -44,15 +47,23 @@ class ArgumentResolver implements ArgumentResolverInterface
                 if(class_exists($class)) {
 
                     $class = new $class;
-                    if ($class instanceof Request) {
-                        $container = new Container;
-                        $class = $container->get('core.request');
+
+                    if ($class instanceof Request && $this->container != null) {
+                        $class = $this->container->get('core.request');
                     }
+
                     array_push($arg,$class);
+
                 }
             }
         }
 
+    }
+
+
+    public function setContainer(ContainerInterface $container)
+    {
+        $this->container = $container;
     }
 
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5cba8598c1b556de586598a0a604a7c2",
+    "content-hash": "b181ac261fbb9e976b1750f850b83465",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -991,6 +991,45 @@
                 "source": "https://github.com/php-fig/http-message/tree/master"
             },
             "time": "2016-08-06T14:39:51+00:00"
+        },
+        {
+            "name": "qamar/container",
+            "version": "1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/qamar-h/Container.git",
+                "reference": "d8b0edbf02d0d880b3bc3ff510b18ed9c4f19de9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/qamar-h/Container/zipball/d8b0edbf02d0d880b3bc3ff510b18ed9c4f19de9",
+                "reference": "d8b0edbf02d0d880b3bc3ff510b18ed9c4f19de9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2",
+                "phpunit/phpunit": "^9.5",
+                "psr/container": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "QH\\Container\\": "src/",
+                    "QH\\Container\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hayat Qamar",
+                    "email": "hayat.qamar@gmail.com"
+                }
+            ],
+            "description": "A simple container of service",
+            "time": "2021-04-14T12:32:13+00:00"
         },
         {
             "name": "qamar/routing",
@@ -2361,5 +2400,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }

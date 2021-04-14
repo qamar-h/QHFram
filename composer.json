@@ -28,6 +28,7 @@
         "phpunit/phpunit": "^9.5",
         "symfony/var-dumper": "^5.2",
         "psr/container": "^2.0",
-        "qamar/routing": "^1.0"
+        "qamar/routing": "^1.0",
+        "qamar/container": "^1.2"
     }
 }
