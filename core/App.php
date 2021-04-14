@@ -9,7 +9,6 @@ use Core\Component\EventEmitter\Event\{ArgumentEvent, ControllerEvent, RequestEv
 
 class App extends AbstractFrontController
 {
-
     public function run()
     {   
  
@@ -48,7 +47,6 @@ class App extends AbstractFrontController
 
     }
 
-    
 }
 
 
