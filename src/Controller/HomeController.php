@@ -8,7 +8,7 @@ use Core\Component\Controller\BaseController;
 class HomeController extends BaseController
 {
 
-    
+ 
     public function index(Request $request)
     {
         $params = [
@@ -17,12 +17,6 @@ class HomeController extends BaseController
         ];
     
         $this->renderFromTemplate("home/index",$params);
-    }
-
-
-    public function about(string $name,int $age)
-    {
-        dd('Votre nom est:  ' . $name . ', Votre âge est : ' . $age .' ans');
     }
 
 

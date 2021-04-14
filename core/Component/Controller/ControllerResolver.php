@@ -13,7 +13,7 @@ class ControllerResolver implements ControllerResolverInterface
 
     public function resolve(Route $route): callable
     {
-
+       
         if ($route->getCallback() instanceof \Closure) {
             return $route->getCallback();
         }
@@ -31,11 +31,11 @@ class ControllerResolver implements ControllerResolverInterface
             throw new ControllerClassNotFoundException('"' . $class . '" class not found');
         }
 
-        if (!method_exists(new $class, $method)) {
+        $instanceOfClass = $this->container !== null ? $this->container->instanciate($class) : new $class;
+
+        if (!method_exists($instanceOfClass, $method)) {
             throw new ControllerMethodNotFoundException('method "' . $method . '" not found in "' . $class . '"');
         }
-
-        $instanceOfClass = $this->container !== null ? $this->container->instanciate($class) : new $class;
 
         return [$instanceOfClass, $method];
 
