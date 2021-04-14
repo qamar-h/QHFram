@@ -18,16 +18,10 @@ class ArgumentResolver implements ArgumentResolverInterface
         $arg = array_merge($arg,$route->getParams());
 
         if(!$callback instanceof \Closure) {
-            $this->controllerReflection($callback, $arg);
+            $this->methodRelection($callback, $arg);
         }
 
         return $arg;
-    }
-
-
-    private function controllerReflection(callable $callback, array &$arg)
-    {
-        $this->methodRelection($callback, $arg);
     }
 
 

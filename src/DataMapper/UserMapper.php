@@ -5,8 +5,7 @@ namespace App\DataMapper;
 use Core\Component\ORM\AbstractDataMapper;
 use Core\Component\ORM\EntityInterface;
 use App\Entity\User;
-use Core\Component\ORM\PDOStorage;
-use Core\Component\ORM\DatabaseStorageInterface;
+
 
 class UserMapper extends AbstractDataMapper
 {
@@ -21,4 +20,5 @@ class UserMapper extends AbstractDataMapper
             ->setFullname($row['fullname'])
             ->setCreatedAt($row['created_at']);
     }
+
 }

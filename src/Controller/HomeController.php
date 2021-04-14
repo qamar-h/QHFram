@@ -8,6 +8,7 @@ use Core\Component\Controller\BaseController;
 class HomeController extends BaseController
 {
 
+    
     public function index(Request $request)
     {
         $params = [

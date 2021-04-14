@@ -4,9 +4,12 @@ namespace Core\Component\Controller;
 
 use QH\Routing\Route\Route;
 use Core\Component\Controller\ControllerException;
+use QH\Container\Container;
 
 class ControllerResolver implements ControllerResolverInterface
 {
+
+    private $container;
 
     public function resolve(Route $route): callable
     {
@@ -32,10 +35,17 @@ class ControllerResolver implements ControllerResolverInterface
             throw new ControllerMethodNotFoundException('method "' . $method . '" not found in "' . $class . '"');
         }
 
-        return [new $class, $method];
+        $instanceOfClass = $this->container !== null ? $this->container->instanciate($class) : new $class;
+
+        return [$instanceOfClass, $method];
 
     }
 
+
+    public function setContainer(Container $container)
+    {
+        $this->container = $container;
+    }
 
 
 }
